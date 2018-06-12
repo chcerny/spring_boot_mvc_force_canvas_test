@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Canvas SDK / App</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="/lightningdesignsystem/styles/salesforce-lightning-design-system.min.css"/>
+    <!--
+    The following code demonstrates how the javascript sdk of the salesforce canvas can be used.
+    It works, the resizing of the canvas is done correctly, but when the visualforce page is also
+    using the salesforce lightning design system this is no anymore required.
+    -->
+    <!--
+    <script type="text/javascript" src="/SalesforceCanvasJavascriptSDK/js/canvas-all.js"></script>
+    <script type="text/javascript">
+        Sfdc.canvas(function() {
+            json_request_token = '[[${json_request_token}]]';
+
+            try {
+                sr = JSON.parse(json_request_token);
+                // sr = JSON.parse('<%=signedRequestJson%>');
+                Sfdc.canvas.client.autogrow(sr.client, true, 100);
+            } catch (err) {
+                console.log(err);
+            }
+        });
+    </script>
+    -->
+</head>
+<body>
+    <p>---- START - CANVAS SIGNED REQUEST -----</p>
+    <p style="word-wrap: break-word;">[[${signed_request}]]</p>
+    <p>---- END - CANVAS SIGNED REQUEST -----</p>
+    <p th:text="'Canvas Client Secret: <' + ${canvas_client_secret} + '>'" />
+    <p th:text="'Canvas Authorization Header: <' + ${authorization} + '>'" />
+    <p th:text="'Canvas Access Token: <' + ${access_token} + '>'" />
+    <p>----- START - DECODED JSON REQUEST TOKEN -----</p>
+    <pre>[[${json_request_token}]]</pre>
+    <p>----- END - DECODED JSON REQUEST TOKEN -----</p>
+</body>
+</html>

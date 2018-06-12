@@ -1,0 +1,42 @@
+buildscript {
+    ext {
+        springBootVersion = '2.0.0.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.cerny.test'
+version = '0.1.0'
+targetCompatibility = 1.8
+sourceCompatibility = 1.8
+
+// I don't know when the jar parameters are used, in IntelliJ bootJar the version above and the
+// rootProject.name form settings.gradle is used
+jar {
+    baseName = 'spring-boot-mvc-force-canvas-test'
+    version =  '0.1.0'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+    compile("org.springframework.boot:spring-boot-devtools")
+    compile("commons-codec:commons-codec")
+    testCompile("junit:junit")
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}
